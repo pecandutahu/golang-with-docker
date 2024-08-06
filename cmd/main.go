@@ -15,12 +15,11 @@ func main() {
 	app := fiber.New()
 
 	//Connect to mysql db
-
 	mysqlDB, err := database.ConnectMySQL()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Could not connect to MySQL: %s", err.Error())
 	}
-	defer mysqlDB.Close()
+	// defer mysqlDB.Close()
 
 	// Setup Product Repo and service
 
