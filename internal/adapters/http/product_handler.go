@@ -105,13 +105,3 @@ func (h *ProductHandler) GetAllProducts(c *fiber.Ctx) error {
 
 	return c.JSON(productResponses)
 }
-
-func SetupRoutes(app *fiber.App, service ports.ProductService) {
-	handler := NewProductHandler(service)
-	// Define routes
-	app.Post("/products", handler.CreateProduct)
-	app.Get("/products/:id", handler.GetProductByID)
-	app.Put("/products/:id", handler.UpdateProduct)
-	app.Delete("/products/:id", handler.DeleteProduct)
-	app.Get("/products", handler.GetAllProducts)
-}
